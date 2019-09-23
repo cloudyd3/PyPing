@@ -21,8 +21,14 @@ def ping(host):
         else:
             return False
     else:
-        command = ['ping -c 1', host]
-        return subprocess.run(command) == 0
+        ping_request = subprocess.Popen(['ping', '-c', '1', host], stdout=subprocess.PIPE)
+        response = (ping_request.communicate()[0]).decode("utf-8").splitlines()
+        if 'ms' in response[-6]:
+            ping_time = (response[-4].split('=')[-1])
+            ttl = (response[-4].split('ttl=')[-1])
+            return [ping_time, ttl]
+        else:
+            return False
 
 
 def get_hostname(host):
