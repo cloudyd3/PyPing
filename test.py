@@ -9,16 +9,19 @@ def main():
     address_pool = []
 
     ip_from = input('Input from in x.x.x.x format (Default: 192.168.1.0) ').split(
-        '.')  # Определение нижнего диапазона подсети
+        '.')
     if ip_from[0] == '':
         ip_from = '192.168.1.0'.split('.')
+    # Определение нижнего диапазона подсети
     ip_to = input('Input to in x.x.x.x format (Default 192.168.1.255) ').split(
-        '.')  # Определение верхнего диапазона подсети
+        '.')
     if ip_to[0] == '':
         ip_to = '192.168.1.255'.split('.')
+    # Определение верхнего диапазона подсети
 
     print('Building address pool, please wait...')
     ip_from = list(map(int, ip_from))
+    ip_to = list(map(int, ip_to))
     while int(ip_from[3]) <= int(ip_to[3]):
         address_pool.append('{}.{}.{}.{}'.format(ip_from[0], ip_from[1], ip_from[2], ip_from[3]))
         ip_from[3] = int(ip_from[3] + 1)
