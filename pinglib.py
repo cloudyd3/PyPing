@@ -3,7 +3,7 @@ import socket
 import subprocess
 
 
-#def port_check(host, port):
+# def port_check(host, port):
 #    ping_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #    result = ping_socket.connect_ex((host, port))
 #    ping_socket.close()
@@ -29,6 +29,7 @@ def ping(host):
             return [ping_time, ttl]
         else:
             return False
+
 
 def output(host):
     ping_status = ping(host)

@@ -29,6 +29,7 @@ def main():
 
     pool = multiprocessing.Pool(100)
     result = pool.map(pinglib.output, address_pool)
+    pool.terminate()
     # Скармливание базы IP аддрессов мультипроцессингу
 
     print('Building complete!')
